@@ -33,3 +33,4 @@ Adapt your varnish installation to allow:
 That's all.
 
 Copyright (c) 2009 [hellvinz], released under the MIT license
+Parts of the ESI code come from http://mongrel-esi.googlecode.com/svn/trunk/plugin/fragment_fu/
