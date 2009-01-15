@@ -1,0 +1,35 @@
+Varnish
+=======
+
+This plugin provides helpers to interract with the Varnish proxy.
+It aims at covering two parts:
+- the purge of a cached page/action.
+- the use of ESI includes from Rails (within the light scope of varnish esi support)
+
+
+Example
+=======
+
+- Remotely expire page '/example/test' from a controller/sweeper (happens to expire also the cached page if rails cache enabled)
+expire_page('/example/test')
+
+- Remotely expire action '/example/test' from a controller/sweeper (happens to expire also the cached action if rails cache enabled)
+expire_action('/example/test')
+	
+- Adding an ESI include with a time to live of 10 seconds in a Rails view
+<%= render :esi => time_now_path(:format => :esi), :ttl => 10 %>
+
+Setup
+======
+
+script/install git://github.com/hellvinz/varnish_rails.git
+
+Edit RAILS_ROOT/config/varnish.yml to reflect your varnish installation
+
+Adapt your varnish installation to allow:
+- purge from the rails host (http://varnish.projects.linpro.no/wiki/VCLExamplePurging)
+- esi http://varnish.projects.linpro.no/wiki/ESIfeatures
+
+That's all.
+
+Copyright (c) 2009 [hellvinz], released under the MIT license
