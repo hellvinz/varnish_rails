@@ -42,6 +42,11 @@ context 'edge side includes' do
     
   specify 'it should create an esi include anchor' do
     av = ActionView::Base.new
-    av.render(:esi => '/bla').should.equal "<esi:include src=\"/bla.esi?ttl=0\" max-age=\"0\"/>"
+    av.render(:esi => '/bla').should.equal "<esi:include src=\"/bla.esi\" />"
+  end  
+  
+  specify 'it should create an esi include anchor with a ttl' do
+    av = ActionView::Base.new
+    av.render(:esi => '/bla', :ttl => 10).should.equal "<esi:include src=\"/bla.esi?ttl=10\" max-age='10'/>"
   end
 end
